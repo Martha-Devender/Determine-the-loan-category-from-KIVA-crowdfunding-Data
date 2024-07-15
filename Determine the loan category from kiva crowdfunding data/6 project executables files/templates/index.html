@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiva Loan Prediction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+        body {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2e/Kiva_logo_classic.png'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Add a slight white background for readability */
+            padding: 20px;
+            border-radius: 10px;
+            border-width: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Kiva Loan Prediction</h2>
+        <form action="/predict" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="funded_amount">Funded Amount:</label>
+                <input type="number" class="form-control" id="funded_amount" name="funded_amount" required>
+            </div>
+            <div class="form-group">
+                <label for="clean_borrower_genders">Borrower Genders (1 for female, 0 for male):</label>
+                <input type="number" class="form-control" id="clean_borrower_genders" name="clean_borrower_genders" required>
+            </div>
+            <div class="form-group">
+                <label for="term_in_months">Term in Months:</label>
+                <input type="number" class="form-control" id="term_in_months" name="term_in_months" required>
+            </div>
+            <div class="form-group">
+                <label for="lender_count">Lender Count:</label>
+                <input type="number" class="form-control" id="lender_count" name="lender_count" required>
+            </div>
+            <div class="form-group">
+                <label for="loan_amount_log">Loan Amount Log:</label>
+                <input type="number" class="form-control" id="loan_amount_log" name="loan_amount_log" required>
+            </div>
+            <div class="form-group">
+                <label for="sector">Sector (numeric value):</label>
+                <input type="number" class="form-control" id="sector" name="sector" required>
+            </div>
+            <div class="form-group">
+                <label for="activity">Activity (numeric value):</label>
+                <input type="number" class="form-control" id="activity" name="activity" required>
+            </div>
+            <div class="form-group">
+                <label for="region">Region (numeric value):</label>
+                <input type="number" class="form-control" id="region" name="region" required>
+            </div>
+            <div class="form-group">
+                <label for="country_code">Country Code (numeric value):</label>
+                <input type="number" class="form-control" id="country_code" name="country_code" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        <div id="result" class="mt-4">
+            {% if prediction %}
+                <h4>Predicted Loan Amount: {{ prediction }}</h4>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
